@@ -51,6 +51,9 @@ header .nav-btn{
     display: flex;
     width: 100%;
 }
+.blog a{
+    color:  rgba(255, 255, 255, 0.473);
+}
 
 header .nav-btn button{
     padding: 5px 18px;
@@ -215,6 +218,9 @@ header.scrolled {
 header.scrolled .logo h1 a,
 header.scrolled nav ul li a, header.scrolled .menu{
     color: black;
+}
+header.scrolled nav ul .blog a{
+    color:  rgba(25, 141, 218, 0.904);
 }
 
 /* First section of the page */
@@ -429,6 +435,22 @@ footer .pFooter{
     margin: 10px 0;
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* JS style */
+.section_js{
+    padding: 20px;
+    height: 9vh;
+    place-items: center;
+}
+section button{
+    background-color: red;
+    color: white;
+    border: 1px solid transparent;
+    padding: 2px 5px;
+    font-size: 17px;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
 @media screen and (width <= 500px){

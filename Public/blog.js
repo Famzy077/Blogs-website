@@ -87,10 +87,10 @@ let fetchPosts = () => {
                 <h2>${post.headline}</h2>
                 <p>${post.content}</p>
               </main>
-              <section>
+              <section class='section_js'>
                 <p><i>Author:</i> ${post.author}</p>
                 <small>${new Date().toLocaleDateString()}</small>
-                <button onclick="deletePost('${post.id}')">Delete</button>
+                <button onclick="deletePost('${post.id}')">remove</button>
               </section> 
           </article>
         `;

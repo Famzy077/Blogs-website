@@ -15,3 +15,4 @@ Responsive Design: The chat interface adapts to different screen sizes, providin
 User Authentication: Only registered users can access the chat feature, ensuring privacy and security for all communications.
 
 In essence, the chat is all about replicating the core functionalities of real-time messaging apps like chat application, focusing on speed, responsiveness, and real-time interaction.# Chat-Clone
+# Blog-Website

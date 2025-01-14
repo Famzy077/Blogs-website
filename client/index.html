@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog-Era News</title>
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="../fonts/css/all.css">
+    <link rel="shortcut icon" href="images/nav-logo'.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Jacquarda+Bastarda+9&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+   <main class="head">
+        <section class="head-section">
+            <header>
+                <div class="logo-div">
+                    <div class="logo">
+                        <img src="../images/nav-logo'.png" alt="logo-image">
+                        <h1><a href="#">Era News</a></h1>
+                    </div>
+                    <div class="menu">
+                        <i  id="menuBar" class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="#">Feature</a></li>
+                    <li class="blog"><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    </ul>
+                </nav>
+
+                <main class="Main_Menu">
+                    <div class="mene_bar_2">
+                        <div class="nav_menu">
+                            <p><a href="#">Home</a><p>
+                            <p><a href="#">Feature</a><p>
+                            <p><a href="#">Blog</a><p>
+                            <p><a href="#">Contact</a><p>
+                            <p><a href="#">Jobs</a><p>
+                        </div>
+                        <div class="nav_btn2">
+                            <button class=""><a href="">Login</a></button>
+                            <button class="get_started"><a href="">Get Started</a></button>
+                        </div>
+                    </div>
+                </main>
+    
+                <div class="nav-btn">
+                    <button class=""><a href="">Login</a></button>
+                    <button class="get_started"><a href="">Get Started</a></button>
+                </div>
+            </header>
+            <div class="head-blog">
+                <h1>Blog</h1>
+                <p><a href="#">Home</a>Blog</p>
+            </div>
+        </section>
+
+    <!-- This is the first Section of the page (Complexity)-->
+    </main>
+    <section class="section1">
+        <div class="search">
+            <h1>Trending >>>>>></h1>
+        </div>
+        <main class="main_blog">
+            <div id="blog_boxs" class="blog_box">
+
+            </div>
+            <div id="blog_box" class="blog_box">
+
+            </div>
+        </main>
+    </section>
+
+    <!-- <div class="post-preview" id="blog_box"> -->
+        <!-- Blog posts will be loaded here -->
+    <!-- </div> -->
+
+    <div id="posts"></div>
+
+    <form id="new-post-form" enctype="multipart/form-data">
+        
+        <div class="text_field">
+            <label for="content">Content:</label>
+            <textarea id="content" placeholder="Enter blog content" rows="1" required></textarea>
+        </div>
+        <div class="headline">
+            <label for="content">Headlines:</label>
+            <input id="headline" placeholder="Enter the headlines" required>
+        </div>
+
+        <div class="file">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" accept="image/*">
+        </div>
+    
+        <div class='user_name'>
+            <label for="user">Posted by:</label>
+            <!-- <input type="text" id="user" placeholder="Enter your name"> -->
+            <input type="text" id="author" placeholder="Author" required>
+        </div>
+    
+        <button type="submit">Create Post</button>
+    </form>
+
+
+
+    <section class="lastSection">
+        <div class="textBox">
+            <h1>Easier Business Management</h1>
+            <p>Our experts will show you how our app can streamline your team’s workflow.</p>
+        </div>
+        <main class="lastbtn">
+            <button><a href="#">Get Started</a></button>
+        </main>
+    </section>
+    <footer>
+        <div class="footer">
+            <main class="">
+                <div class="logo_footer">
+                    <img src="#" alt="logo-image">
+                    <h1><a href="#">Era News</a></h1>
+                </div>
+                <div class="iconBox">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-square-instagram"></i>
+                    <i class="fa-solid fa-basketball"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </main>
+            <div class="links">
+                <p class="text_head">Main</p>
+                <ul>
+                    <li><a href="">Get Started</a></li>
+                    <li><a href="">Features</a></li>
+                    <li><a href="">Pricing</a></li>
+                    <li><a href="">Login</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <p class="text_head">Others</p>
+                <ul>
+                    <li><a href="#">Terms of use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <section>
+                <p class="text_head">Contact</p>
+                   <p>Era News@gmail.com</p>
+                   <p>+12672352519</p>
+                   <p>5620 Gainor Road Philadelphia, PA 19131</p>
+            </section>
+        </div>
+        <div class="yearCreated">
+            
+        </div>
+    </footer>
+
+
+    <script src="./blog.js"></script>
+</body>
+</html>

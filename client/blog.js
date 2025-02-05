@@ -3,7 +3,9 @@
     const navLinks = document.querySelectorAll('.nav a');
     const logo = document.querySelector('.logo h1')
 
-    
+    window.addEventListener('load', (e) => {
+      
+    })
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) { 
           header.classList.add('scrolled');
@@ -122,7 +124,7 @@ function deletePost(e) {
       } else {
           let deleteAlert = document.createElement('div');
           deleteAlert.innerHTML = `
-            <b>Post deleted successfully <button deleteId='${data}' class="delete-btn">X</button></b>
+            <b class='btnELem'>Post deleted successfully <button deleteId='${data}' class="delete-btn">X</button></b>
           `;
           Delete.append(deleteAlert);
           let btnAlert = deleteAlert.querySelector('.delete-btn');

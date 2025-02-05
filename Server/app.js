@@ -40,6 +40,7 @@ mongoose.connect('mongodb://localhost:27017/blogDB')
 app.get('/api/posts', async (req, res) => {
   try {
     const posts = await Post.find({});
+     
     res.json(posts);
   } catch (err) {
     res.status(500).send('Error fetching posts');
@@ -54,7 +55,6 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
       content: req.body.content,
       author: req.body.author,
       image: `/uploads/${req.file.filename}`,
-      date: new Date().toDateString()
     });
     await post.save();
     res.status(201).json(post);

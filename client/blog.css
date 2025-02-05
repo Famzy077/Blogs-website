@@ -290,14 +290,45 @@ header.scrolled nav ul .blog a{
 }
 
 #delete{
-    position: absolute;
-    background-color: rgb(66, 238, 66);
-    color: white;
+    position: relative;
 }
-
+#delete .btnELem{
+    position: fixed;
+    background-color: rgb(66, 238, 66);
+    box-shadow: 0 0 5px 0 black;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    margin-bottom: 13rem;
+    right: 0;
+    left: 0;
+    bottom: -6rem;
+    font-size: 1.5rem;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+#delete button{
+    background-color: red;
+    color: white;
+    border: transparent; 
+    padding: 3px 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 6px;
+}
+#delete button:hover{
+    background-color: rgba(255, 0, 0, 0.774);
+    color: white;
+    transition: all;
+}
 form{
     margin: 30px;
     font-size: 18px;
+    font-weight: 200;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 form .text_field{
     margin: 5px 0;
@@ -310,7 +341,7 @@ form .text_field textarea{
     color: #161414;
     padding: 10px 10px 0 10px;
     outline: none;
-    height: auto;
+    height: fit-content;
     overflow-y: hidden;
 }
 form .text_field textarea:focus{

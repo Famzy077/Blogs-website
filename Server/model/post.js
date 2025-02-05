@@ -10,6 +10,6 @@ const postSchema = new mongoose.Schema({
 });
 const Post = mongoose.model('Post', postSchema);
 
-// console.log('Successfully Structure Database')
+console.log('Successfully Structure Database') 
 
 module.exports = Post;

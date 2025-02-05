@@ -1,19 +1,19 @@
 [
     {   
         "id": 1,
-        "image": "../images/5472.avif",
+        "image": "images/5472.avif",
         "title": "Bitcoin (BTC) Crypto News Today",
         "content": "Bitcoin miners are emerging as dynamic energy buyers, using sophisticated strategies to adjust their energy consumption based on supply and demand."
     },
     {   
         "id": 4,
-        "image": "../images/Buis_USA_News.webp",
+        "image": "images/Buis_USA_News.webp",
         "title": "Boeing’s Failed Plea Deal: What Happens Next",
         "content": "‘A weak plea deal will do nothing to effectuate major change within the company,’ Applebaum said."
     },
     {   
         "id": 7,
-        "image": "../images/thepocs_news.webp",
+        "image": "images/thepocs_news.webp",
         "title": "Hunter Biden Pardon Covers Broad Scope",
         "content": "‘There’s a general practice as to when pardons ought to be issued ... and presidents get to exercise it for good reasons and bad reasons,’ Malcolm said."
     },
@@ -25,7 +25,7 @@
     },
     {   
         "id": 8,
-        "image": "../images/professional-picture.jpg",
+        "image": "images/professional-picture.jpg",
         "title": "Here’s What Americans Are Thankful for This Year",
         "content": "Family, life, and life’s little blessings loom large as Americans prepare for their national day of gratitude."
     },

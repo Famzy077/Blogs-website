@@ -66,128 +66,100 @@
     .catch(error => {
         console.log(error)
     })
-
-
-    // Fetch posts and display them
-let fetchPosts = () => {
-  fetch('/api/posts')
-    .then(response => response.json())
-    .then(posts => {
-      // const postsDiv = document.getElementById('posts');
-      // postsDiv.innerHTML = '';
-      blog_box.innerHTML = '';
-      posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.innerHTML = `
-          <article class="">
-              <span>
-                <img src="${post.image}" alt="Blog image">
-              </span>
-              <main>
-                <h2>${post.headline}</h2>
-                <p>${post.content}</p>
-              </main>
-              <section class='section_js'>
-                <p><i>Author:</i> ${post.author}</p>
-                <small>${new Date().toLocaleDateString()}</small>
-                <button onclick="deletePost('${post.id}')">remove</button>
-              </section> 
-          </article>
-        `;
-        // postsDiv.appendChild(postElement);
-        blog_boxs.appendChild(postElement);
-      });
-    });
-}
-
-// Delete a post
-let deletePost = (postId) => {
-  console.log('Deleting post with ID:', postId);  // Log the postId for debugging
-
-  if (!postId) {
-    console.error('No post ID provided!');
-    return;
-  }
-
-  if (confirm('Are you sure you want to delete this post?')) {
-    fetch(`/api/posts://${postId}`, {
-      method: 'DELETE'
-    })
+  
+// Fetch and display posts
+const fetchPosts = () => {
+  fetch('http://localhost:3000/api/posts')
     .then(response => {
-      if (!response.ok) {
-        return response.json().then(err => { throw new Error(err.error); });
-      }
+      if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
     })
-    .then(data => {
-      console.log(data.message);
-      fetchPosts();  // Refresh the posts after deletion
+    .then(posts => {
+      blog_box.innerHTML = '';
+      const formattedDate = new Date().toLocaleDateString();
+      posts.forEach(getPost => {
+        let {headline} = getPost;
+        console.log(headline, 'correct');
+        const postElement = document.createElement('div');
+        postElement.innerHTML = `
+          <article>
+            <span>
+              <img class='jsImg' src="http://localhost:3000${getPost.image}" alt="${getPost.title}">
+            </span>
+            <main>
+              <h5>${getPost.headline}</h5>
+              <p>${getPost.content}</p>
+            </main>
+            <section class='section_js'>
+              <p><i>Author:</i> ${getPost.author}</p>
+              <small>${getPost.date}</small>
+          <button class="delete-btn" data-id="${getPost._id}">Delete</button>
+            </section> 
+          </article>
+        `;
+        blog_box.appendChild(postElement);
+        document.querySelectorAll('.delete-btn').forEach(button => {
+          button.addEventListener('click', 
+            deletePost);
+        });
+      });
     })
-    .catch(error => console.error('Error deleting post:', error.message));
-  }
+    .catch(error => console.error('Error fetching posts:', error));
+};
+
+const Delete = document.getElementById('delete')
+const deleteAlert = document.createElement('p')
+// Delete a post
+function deletePost(e) {
+  const postId = e.target.getAttribute('data-id');
+  fetch(`http://localhost:3000/api/posts/${postId}`, {
+    method: 'DELETE',
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        console.error('Error deleting post:', data.error);
+      } else {
+          let deleteAlert = document.createElement('div');
+          deleteAlert.innerHTML = `
+            <b>Post deleted successfully <button deleteId='${data}' class="delete-btn">X</button></b>
+          `;
+          Delete.append(deleteAlert);
+          let btnAlert = deleteAlert.querySelector('.delete-btn');
+          if (btnAlert) {
+            btnAlert.addEventListener('click', (e) => {
+              e.preventDefault();
+              deleteAlert.style.display = 'none';
+            });
+          } else {
+            console.error('Button not found');
+          }
+        console.log('Post deleted successfully:', data.message);
+        fetchPosts(); // Refresh the post list
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting post:', error);
+    });
 }
 
 // Create a new post
 document.getElementById('new-post-form').addEventListener('submit', function (e) {
   e.preventDefault();
-  
   const formData = new FormData();
   formData.append('image', document.getElementById('image').files[0]);
   formData.append('headline', document.getElementById('headline').value);
   formData.append('author', document.getElementById('author').value);
   formData.append('content', document.getElementById('content').value);
 
-  fetch('/api/posts', {
-    method: 'POST',
-    body: formData
-  }).then(response => response.json())
+  fetch('http://localhost:3000/api/posts', { method: 'POST', body: formData })
+    .then(response => response.json())
     .then(() => {
-      fetchPosts();  // Refresh the posts after adding a new one
+      fetchPosts();  // Refresh posts
       document.getElementById('new-post-form').reset();
-    });
+    })
+    .catch(error => console.error('Error creating post:', error));
 });
 
 // Fetch posts on page load
 fetchPosts();
-
-
-
-
-// function createPost(postData) {
-//   const token = localStorage.getItem('jwtToken');  // Get the stored token
-
-//   fetch('/api/posts', {
-//       method: 'POST',
-//       headers: {
-//           'Authorization': `Bearer ${token}`,  // Include the JWT token
-//           'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(postData)  // Your blog post data
-//   })
-//   .then(response => {
-//       if (response.status === 403) {
-//           return response.json().then(data => {
-//               if (data.error === "Company not registered" && data.redirectUrl) {
-//                   alert("You are not registered. Redirecting to the registration page...");
-//                   window.location.href = data.redirectUrl;  // Redirect to the registration page
-//               }
-//           });
-//       } else if (!response.ok) {
-//           throw new Error('Something went wrong');
-//       }
-//       return response.json();
-//   })
-//   .then(data => {
-//       console.log('Post created successfully:', data);
-//       // Refresh or update the UI with the new post
-//   })
-//   .catch(error => console.error('Error creating post:', error));
-// }
-
-// // Example of calling the function
-// createPost({
-//   headline: 'New Blog Post',
-//   content: 'This is the content of the blog post',
-//   image: 'image_url.jpg'
-//   author: 'image_url.jpg'
-// });

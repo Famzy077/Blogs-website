@@ -5,7 +5,7 @@
 }
 
 .head{
-    background-image: url(../images/image.png);
+    background-image: url(images/image.png);
     background-position: center;
     height: 20rem;
 }
@@ -248,8 +248,8 @@ header.scrolled nav ul .blog a{
     gap: 25px;
 }
 .blog_box{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    display: flex;
+    flex-wrap: wrap;
     gap: 29px;
 }
 .blog_box article{
@@ -270,6 +270,9 @@ header.scrolled nav ul .blog a{
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
+.blog_box article{
+    width: 400px;
+}
 
 .blog_box main{
     font-size: 18px;
@@ -286,6 +289,12 @@ header.scrolled nav ul .blog a{
     margin: 10px;
 }
 
+#delete{
+    position: absolute;
+    background-color: rgb(66, 238, 66);
+    color: white;
+}
+
 form{
     margin: 30px;
     font-size: 18px;
@@ -298,9 +307,11 @@ form .text_field textarea{
     border-bottom: 1px solid black;
     place-content: end;
     font-size: 16px;
-    color: rgba(24, 23, 23, 0.774);
+    color: #161414;
     padding: 10px 10px 0 10px;
     outline: none;
+    height: auto;
+    overflow-y: hidden;
 }
 form .text_field textarea:focus{
     border-bottom: 1PX solid black;
@@ -308,7 +319,7 @@ form .text_field textarea:focus{
 form .headline input{
     border: none;
     font-size: 16px;
-    color: #707070;
+    color: #161414;
     border-bottom: 1px solid black;
     outline: none;
     margin: 10px;
@@ -316,7 +327,7 @@ form .headline input{
 form .user_name input{
     border: none;
     font-size: 16px;
-    color: #707070;
+    color: #161414;
     border-bottom: 1px solid black;
     outline: none;
     margin: 10px;
@@ -452,6 +463,9 @@ section button{
     border-radius: 7px;
     cursor: pointer;
 }
+article{
+    margin-top: 55px;
+}
 
 @media screen and (width <= 500px){
     nav ul{
@@ -517,10 +531,11 @@ section button{
         flex-wrap: wrap;
         padding-top: 20px;
     }
+    
+    
     .blog_box{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, auto));
-        gap: 29px;
+        display: flex;
+        flex-wrap: wrap;
     }
     .lastSection{
         flex-direction: column;
@@ -558,8 +573,10 @@ section button{
         padding-top: 20px;
     }
     .blog_box{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+        display: flex;
+        flex-wrap: wrap;
+        /* display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, auto)); */
         gap: 29px;
     }
     .lastSection{
@@ -570,5 +587,8 @@ section button{
     }
     .footer{
         gap: 40px;
+    }
+    .blog_box article{
+        width: 350px;
     }
 }

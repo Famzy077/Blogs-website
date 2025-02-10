@@ -167,7 +167,7 @@ document.getElementById('new-post-form').addEventListener('submit', function (e)
   fetch('https://blogs-server-khaki.vercel.app/api/posts', { method: 'POST', body: formData })
     .then(response => response.json())
     .then(() => {
-      fetchPosts();  // Refresh posts
+      fetchPosts();
       document.getElementById('new-post-form').reset();
     })
     .catch(error => console.error('Error creating post:', error));

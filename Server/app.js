@@ -62,9 +62,10 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
       date: formattedDate
     });
     await post.save();
-    res.status(201).json(post);
+    res.status(201).json(post,{message: 'successfully create a post!'});
   } catch (err) {
     res.status(500).send('Error creating post');
+    console.error(err, 'An error occur')
   }
 });
 

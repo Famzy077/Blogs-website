@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Database connection
-mongoose.connect('mongodb://localhost:27017/blogDB')
+mongoose.connect('mongodb+srv://blogProject:2t5trLjel0MUrdFb@cluster0.e3jkq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Database connected'))
   .catch((error) => console.log('Database connection error:', error));
 

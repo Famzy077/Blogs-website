@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Edu+AU+VIC+WA+NT+Arrows&family=Jacquarda+Bastarda+9&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Vinyl&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -244,86 +245,6 @@ header.scrolled nav ul .blog a{
     border: 1px solid black;
 }
 
-.main_blog{
-    gap: 25px;
-}
-.blog_box{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 29px;
-}
-.blog_box article{
-    box-shadow: 0 0 10px 0 gray;
-    border-radius: 10px;
-}
-.blog_box  img{
-    width: 100%;
-}
-
-.blog_box_text{
-    padding: 10px;
-}
-.blog_box span img{
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-.blog_box article{
-    width: 400px;
-}
-
-.blog_box main{
-    font-size: 18px;
-    margin: 10px;
-}
-.blog_box main p{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #707070;
-
-}
-.blog_box section{
-    display: flex;
-    gap: 20px;
-    margin: 10px;
-}
-
-#delete{
-    position: relative;
-}
-#delete .btnELem{
-    position: fixed;
-    background-color: rgb(66, 238, 66);
-    box-shadow: 0 0 5px 0 black;
-    color: white;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    margin-bottom: 13rem;
-    right: 0;
-    left: 0;
-    bottom: -6rem;
-    font-size: 1.5rem;
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-    text-align: center;
-}
-#delete button{
-    background-color: red;
-    color: white;
-    border: transparent; 
-    padding: 3px 1.2rem;
-    font-size: 1.5rem;
-    font-weight: 800;
-    border-radius: 6px;
-}
-#delete button:hover{
-    background-color: rgba(255, 0, 0, 0.774);
-    color: white;
-    transition: all;
-}
 form{
     margin: 30px;
     font-size: 18px;
@@ -480,10 +401,109 @@ footer .pFooter{
 }
 
 /* JS style */
+.blog_box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 29px;
+}
+.blog_box span img{
+    width: 100%;
+    height: 290px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.blog_box article{
+    padding-bottom: 16px;
+    width: 400px;
+    background-color: whitesmoke;
+}
+
+.blog_box article h2{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    margin: 11px;
+}
+.blog_box article p{
+    font-size: 1rem;
+    color: rgb(75, 73, 73);
+    margin-bottom: 10px;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: italic;
+    margin: 11px;
+}
+.blog_box article b{
+    padding: 10px;
+}
+.blog_box article small{
+    padding: 10px;
+}
 .section_js{
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    padding: 10px;
+    padding-bottom: 0;
+}
+.article{
+    margin-top: 30px;
+}
+
+.section_js button{
+    background-color: red;
+    border: transparent;
+    color: white;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+}
+.section_js button:hover{
+    background-color: rgba(202, 8, 8, 0.795);
+}
+
+/* Post Delete Alert*/
+#delete{
+    position: relative;
+}
+#delete .btnELem{
+    position: fixed;
+    background-color: rgb(66, 238, 66);
+    box-shadow: 0 0 5px 0 black;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    margin-bottom: 13rem;
+    right: 0;
+    left: 0;
+    bottom: -6rem;
+    font-size: 1.5rem;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+#delete button{
+    background-color: red;
+    color: white;
+    border: transparent; 
+    padding: 3px 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 6px;
+}
+#delete button:hover{
+    background-color: rgba(255, 0, 0, 0.774);
+    color: white;
+    transition: all;
+}
+/* .section_js{
     height: 9vh;
     place-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 section button{
     background-color: red;
@@ -497,6 +517,12 @@ section button{
 article{
     margin-top: 55px;
 }
+.author{
+    margin-top: 10px;
+    color: black;
+    border: 3px solid brown;
+} */
+
 
 @media screen and (width <= 500px){
     nav ul{
@@ -533,6 +559,9 @@ article{
         padding: 10px 30px;
         height: fit-content;
     }
+    .blog_box article{
+        width: 100%    
+    }
     .footer{
         gap: 40px;
     }
@@ -564,9 +593,8 @@ article{
     }
     
     
-    .blog_box{
-        display: flex;
-        flex-wrap: wrap;
+    .blog_box article{
+        width: 100%    
     }
     .lastSection{
         flex-direction: column;
@@ -606,9 +634,6 @@ article{
     .blog_box{
         display: flex;
         flex-wrap: wrap;
-        /* display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, auto)); */
-        gap: 29px;
     }
     .lastSection{
         flex-direction: column;

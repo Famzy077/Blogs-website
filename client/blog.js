@@ -53,7 +53,7 @@
             const allBox = document.createElement('article')
             let imageBox = document.createElement('span');
             let contentBox = document.createElement('main');
-            let profileBox = document.createElement('section');
+            let profileBox = document.createElement('small');
             
             imageBox.appendChild(img);
             contentBox.append(h2Elem, pElem)
@@ -71,31 +71,29 @@
   
 // Fetch and display posts
 const fetchPosts = () => {
-  fetch('http://localhost:3000/api/posts')
+  fetch('https://blogs-server-khaki.vercel.app/api/posts')
     .then(response => {
       if (!response.ok) throw new Error('Network response was not ok');
       return response.json();
     })
     .then(posts => {
       blog_box.innerHTML = '';
-      const formattedDate = new Date().toLocaleDateString();
       posts.forEach(getPost => {
-        let {headline} = getPost;
-        console.log(headline, 'correct');
         const postElement = document.createElement('div');
+        const dateString = new Date(getPost.date).toLocaleDateString('en-US'); 
         postElement.innerHTML = `
-          <article>
+          <article class='article'>
             <span>
-              <img class='jsImg' src="http://localhost:3000${getPost.image}" alt="${getPost.title}">
+              <img class='jsImg' src="https://blogs-server-khaki.vercel.app/${getPost.image}" alt="${getPost.title}">
             </span>
-            <main>
-              <h5>${getPost.headline}</h5>
+            <div>
+              <h2>${getPost.headline}</h2>
               <p>${getPost.content}</p>
-            </main>
+              <p class='author'><i>Author:</i> ${getPost.author}</p>
+            </div>
             <section class='section_js'>
-              <p><i>Author:</i> ${getPost.author}</p>
-              <small>${getPost.date}</small>
-          <button class="delete-btn" data-id="${getPost._id}">Delete</button>
+              <small>${dateString}</small>
+              <button class="delete-btn" data-id="${getPost._id}">Delete</button>
             </section> 
           </article>
         `;
@@ -109,39 +107,51 @@ const fetchPosts = () => {
     .catch(error => console.error('Error fetching posts:', error));
 };
 
+// Delete a post
 const Delete = document.getElementById('delete')
 const deleteAlert = document.createElement('p')
-// Delete a post
 function deletePost(e) {
   const postId = e.target.getAttribute('data-id');
-  fetch(`http://localhost:3000/api/posts/${postId}`, {
+
+  // Confirm deletion before making the request
+  const confirmDeletePost = confirm('Are you sure you want to delete this post?');
+  if (!confirmDeletePost) {
+    return; // Exit if the user cancels the deletion
+  }
+
+  fetch(`https://blogs-server-khaki.vercel.app/api/posts/${postId}`, {
     method: 'DELETE',
   })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        console.error('Error deleting post:', data.error);
-      } else {
-          let deleteAlert = document.createElement('div');
-          deleteAlert.innerHTML = `
-            <b class='btnELem'>Post deleted successfully <button deleteId='${data}' class="delete-btn">X</button></b>
-          `;
-          Delete.append(deleteAlert);
-          let btnAlert = deleteAlert.querySelector('.delete-btn');
-          if (btnAlert) {
-            btnAlert.addEventListener('click', (e) => {
-              e.preventDefault();
-              deleteAlert.style.display = 'none';
-            });
-          } else {
-            console.error('Button not found');
-          }
-        console.log('Post deleted successfully:', data.message);
-        fetchPosts(); // Refresh the post list
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
       }
+      return response.json();
+    })
+    .then(data => {
+      // Display success message
+      const deleteAlert = document.createElement('div');
+      deleteAlert.innerHTML = `
+        <b class='btnELem'>Post deleted successfully <button deleteId='${data}' class="delete-btn">X</button></b>
+      `;
+      Delete.append(deleteAlert);
+
+      const btnAlert = deleteAlert.querySelector('.delete-btn');
+      if (btnAlert) {
+        btnAlert.addEventListener('click', (e) => {
+          e.preventDefault();
+          deleteAlert.remove(); // Remove the alert when the button is clicked
+        });
+      } else {
+        console.error('Button not found');
+      }
+
+      console.log('Post deleted successfully:', data.message);
+      fetchPosts(); // Refresh the post list
     })
     .catch(error => {
       console.error('Error deleting post:', error);
+      alert('Failed to delete post. Please try again.'); // Notify the user of the error
     });
 }
 
@@ -154,7 +164,7 @@ document.getElementById('new-post-form').addEventListener('submit', function (e)
   formData.append('author', document.getElementById('author').value);
   formData.append('content', document.getElementById('content').value);
 
-  fetch('http://localhost:3000/api/posts', { method: 'POST', body: formData })
+  fetch('https://blogs-server-khaki.vercel.app/api/posts', { method: 'POST', body: formData })
     .then(response => response.json())
     .then(() => {
       fetchPosts();  // Refresh posts

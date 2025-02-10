@@ -12,9 +12,8 @@ const Port = process.env.Port || 5000;
 
 // Enable CORS
 app.use(cors({
-  origin: 'https://blog-three-gamma-51.vercel.app/',
+  origin: 'https://blog-three-gamma-51.vercel.app',  
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Middleware for parsing POST data

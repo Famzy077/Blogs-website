@@ -51,9 +51,12 @@ app.get('/api/posts', async (req, res) => {
 });
 
 // API endpoint to create a new post
-app.post('api/posts', upload.single('image'), async (req, res) => {
+app.post('/api/posts', upload.single('image'), async (req, res) =>{
   try {
     const formattedDate = new Date().toLocaleDateString('en-US');
+    if (!req.file) {
+      return res.status(400).json({ error: 'No image uploaded' });
+    }
     const post = new Post({
       headline: req.body.headline,
       content: req.body.content,
@@ -62,7 +65,7 @@ app.post('api/posts', upload.single('image'), async (req, res) => {
       date: formattedDate
     });
     await post.save();
-    res.status(201).json(post,{message: 'successfully create a post!'});
+    res.status(201).json({ post, message: 'Successfully created a post!'});
   } catch (err) {
     res.status(500).send('Error creating post');
     console.error(err, 'An error occur')

@@ -155,17 +155,54 @@ function deletePost(e) {
     });
 }
 
-// Create a new post
+// // Create a new post
+// document.getElementById('new-post-form').addEventListener('submit', function (e) {
+//   e.preventDefault();
+//   const formData = new FormData();
+//   formData.append('image', document.getElementById('image').files[0]);
+//   formData.append('headline', document.getElementById('headline').value);
+//   formData.append('author', document.getElementById('author').value);
+//   formData.append('content', document.getElementById('content').value);
+
+//   fetch('https://blogs-server-khaki.vercel.app/api/posts', { method: 'POST', body: formData })
+//     .then(response => response.json())
+//     .then(() => {
+//       fetchPosts();
+//       document.getElementById('new-post-form').reset();
+//     })
+//     .catch(error => console.error('Error creating post:', error));
+// });
+
+
 document.getElementById('new-post-form').addEventListener('submit', function (e) {
   e.preventDefault();
-  const formData = new FormData();
-  formData.append('image', document.getElementById('image').files[0]);
-  formData.append('headline', document.getElementById('headline').value);
-  formData.append('author', document.getElementById('author').value);
-  formData.append('content', document.getElementById('content').value);
+  const image = document.getElementById('image').files[0];
+  const headline = document.getElementById('headline').value;
+  const author = document.getElementById('author').value;
+  const content = document.getElementById('content').value;
 
-  fetch('https://blogs-server-khaki.vercel.app/api/posts/', { method: 'POST', body: formData })
-    .then(response => response.json())
+  if (!image || !headline || !author || !content) {
+    return alert('All fields are required');
+  }
+
+  const formData = new FormData();
+  formData.append('image', image);
+  formData.append('headline', headline);
+  formData.append('author', author);
+  formData.append('content', content);
+
+  fetch('https://blogs-server-khaki.vercel.app/api/posts', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => {
+      if (!response.ok) {
+        return response.text().then(text => {
+          throw new Error('Error: ' + text);
+        });
+      }
+      return response.json();
+    })
     .then(() => {
       fetchPosts();
       document.getElementById('new-post-form').reset();

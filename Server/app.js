@@ -51,7 +51,7 @@ app.get('/api/posts', async (req, res) => {
 });
 
 // API endpoint to create a new post
-app.post('/api/posts', upload.single('image'), async (req, res) => {
+app.post('api/posts', upload.single('image'), async (req, res) => {
   try {
     const formattedDate = new Date().toLocaleDateString('en-US');
     const post = new Post({

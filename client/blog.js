@@ -164,7 +164,7 @@ document.getElementById('new-post-form').addEventListener('submit', function (e)
   formData.append('author', document.getElementById('author').value);
   formData.append('content', document.getElementById('content').value);
 
-  fetch('https://blogs-server-khaki.vercel.app/api/posts', { method: 'POST', body: formData })
+  fetch('https://blogs-server-khaki.vercel.app/api/posts/', { method: 'POST', body: formData })
     .then(response => response.json())
     .then(() => {
       fetchPosts();

@@ -1,1 +1,32 @@
-.vercel
+.vercel# Vercel configuration file
+
+# Project settings
+project:
+  name: My Project
+  link: https://my-project.com
+
+# Build settings
+build:
+  env:
+    - DATABASE_URL
+  command: npm run build
+
+# Routes
+routes:
+  - src: /api/(.*)/index.html
+    dest: /api/$1/index.html
+  - src: /(.*)/index.html
+    dest: /$1/index.html
+
+# Serverless functions
+functions:
+  - api/*.js
+
+# Environment variables
+env:
+  DATABASE_URL: $DATABASE_URL
+
+# Domains
+domains:
+  - my-project.com
+  - www.my-project.com

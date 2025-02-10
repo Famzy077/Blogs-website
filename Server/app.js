@@ -50,11 +50,13 @@ app.get('/api/posts', async (req, res) => {
 // API endpoint to create a new post
 app.post('/api/posts', upload.single('image'), async (req, res) => {
   try {
+    const formattedDate = new Date().toLocaleDateString('en-US');
     const post = new Post({
       headline: req.body.headline,
       content: req.body.content,
       author: req.body.author,
       image: `/uploads/${req.file.filename}`,
+      date: formattedDate
     });
     await post.save();
     res.status(201).json(post);

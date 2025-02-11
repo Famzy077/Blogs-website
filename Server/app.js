@@ -26,20 +26,22 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '')));
 
 // Multer configuration for temporary file storage
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ storage: multer.memoryStorage() }); 
 
 // Upload endpoint
 app.post('/upload', upload.single('file'), async (req, res) => {
   try {
-    const result = await cloudinary.uploader.upload(req.file.path);
-    res.status(200).json({ url: result.secure_url });
+    // Upload file to Cloudinary directly from memory
+    const result = await cloudinary.uploader.upload_stream({ resource_type: 'auto' }, (error, result) => {
+      if (error) {
+        console.error('Error uploading to Cloudinary:', error);
+        return res.status(500).json({ error: 'Failed to upload file' });
+      }
+      res.status(200).json({ url: result.secure_url });
+    }).end(req.file.buffer);
   } catch (error) {
     console.error('Error uploading to Cloudinary:', error);
     res.status(500).json({ error: 'Failed to upload file' });
-  } finally {
-    fs.unlink(req.file.path, (err) => {
-      if (err) console.error('Error deleting temporary file:', err);
-    });
   }
 });
 
@@ -68,13 +70,23 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
       return res.status(400).json({ error: 'No image uploaded' });
     }
 
-    const result = await cloudinary.uploader.upload(req.file.path);
+    // Upload file to Cloudinary directly from memory
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream({ resource_type: 'auto' }, (error, result) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      }).end(req.file.buffer);
+    });
 
+    // Create a new post with the Cloudinary URL
     const post = new Post({
       headline: req.body.headline,
       content: req.body.content,
       author: req.body.author,
-      image: result.secure_url,
+      image: result.secure_url, // Use the Cloudinary URL
       date: formattedDate,
     });
 
@@ -83,12 +95,6 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
   } catch (err) {
     console.error('Error creating post:', err);
     res.status(500).json({ error: 'Error creating post' });
-  } finally {
-    if (req.file) {
-      fs.unlink(req.file.path, (err) => {
-        if (err) console.error('Error deleting temporary file:', err);
-      });
-    }
   }
 });
 

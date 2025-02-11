@@ -81,10 +81,11 @@ const fetchPosts = () => {
       posts.forEach(getPost => {
         const postElement = document.createElement('div');
         const dateString = new Date(getPost.date).toLocaleDateString('en-US'); 
+        // src="https://res.cloudinary.com/deeadcger/image/upload/${getPost.image}"
         postElement.innerHTML = `
           <article class='article'>
             <span>
-              <img class='jsImg' src="https://blogs-server-khaki.vercel.app/${getPost.image}" alt="${getPost.title}">
+              <img class='jsImg' src="${getPost.image}" alt="${getPost.title}">
             </span>
             <div>
               <h2>${getPost.headline}</h2>
@@ -119,7 +120,7 @@ function deletePost(e) {
     return; // Exit if the user cancels the deletion
   }
 
-  fetch(`https://blogs-server-khaki.vercel.app/api/posts/${postId}`, {
+  fetch(`https://blogs-server-khaki.vercel.app/${postId}`, {
     method: 'DELETE',
   })
     .then(response => {
@@ -154,25 +155,6 @@ function deletePost(e) {
       alert('Failed to delete post. Please try again.'); // Notify the user of the error
     });
 }
-
-// // Create a new post
-// document.getElementById('new-post-form').addEventListener('submit', function (e) {
-//   e.preventDefault();
-//   const formData = new FormData();
-//   formData.append('image', document.getElementById('image').files[0]);
-//   formData.append('headline', document.getElementById('headline').value);
-//   formData.append('author', document.getElementById('author').value);
-//   formData.append('content', document.getElementById('content').value);
-
-//   fetch('https://blogs-server-khaki.vercel.app/api/posts', { method: 'POST', body: formData })
-//     .then(response => response.json())
-//     .then(() => {
-//       fetchPosts();
-//       document.getElementById('new-post-form').reset();
-//     })
-//     .catch(error => console.error('Error creating post:', error));
-// });
-
 
 document.getElementById('new-post-form').addEventListener('submit', function (e) {
   e.preventDefault();

@@ -469,10 +469,10 @@ footer .pFooter{
 }
 #delete .btnELem{
     position: fixed;
-    background-color: rgb(66, 238, 66);
+    background-color: rgb(0, 0, 0);
     box-shadow: 0 0 5px 0 black;
     color: white;
-    padding: 15px;
+    padding: 8px 15px;
     margin: 10px;
     border-radius: 5px;
     margin-bottom: 13rem;
@@ -499,30 +499,6 @@ footer .pFooter{
     color: white;
     transition: all;
 }
-/* .section_js{
-    height: 9vh;
-    place-items: center;
-    display: flex;
-    justify-content: space-between;
-}
-section button{
-    background-color: red;
-    color: white;
-    border: 1px solid transparent;
-    padding: 2px 5px;
-    font-size: 17px;
-    border-radius: 7px;
-    cursor: pointer;
-}
-article{
-    margin-top: 55px;
-}
-.author{
-    margin-top: 10px;
-    color: black;
-    border: 3px solid brown;
-} */
-
 
 @media screen and (width <= 500px){
     nav ul{

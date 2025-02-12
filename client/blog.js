@@ -120,7 +120,7 @@ function deletePost(e) {
     return; // Exit if the user cancels the deletion
   }
 
-  fetch(`https://blogs-server-khaki.vercel.app/${postId}`, {
+  fetch(`https://blogs-server-khaki.vercel.app${postId}`, {
     method: 'DELETE',
   })
     .then(response => {

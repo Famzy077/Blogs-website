@@ -552,7 +552,7 @@ footer .pFooter{
         gap: 29px;
     }
     .blog_box span img{
-        height: 250px;
+        height: 260px;
     }
     .lastSection{
         flex-direction: column;
@@ -617,7 +617,7 @@ footer .pFooter{
     }
     .blog_box span img{
         width: 100%;
-        height: 240px;
+        height: 260px;
     }
     
     .blog_box article{
@@ -673,7 +673,7 @@ footer .pFooter{
     }
     .blog_box span img{
         width: 100%;
-        height: 240px;
+        height: 260px;
     }
     .footer{
         gap: 40px;

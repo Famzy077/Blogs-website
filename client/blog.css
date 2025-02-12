@@ -673,7 +673,7 @@ footer .pFooter{
     }
     .blog_box span img{
         width: 100%;
-        height: fit-content;
+        height: 200px;
     }
     .footer{
         gap: 40px;

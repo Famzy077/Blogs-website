@@ -552,7 +552,7 @@ footer .pFooter{
     }
     .blog_box span img{
         width: 100%;
-        height: fit-content;
+        height: 200px;
     }
     .lastSection{
         flex-direction: column;
@@ -617,7 +617,7 @@ footer .pFooter{
     }
     .blog_box span img{
         width: 100%;
-        height: fit-content;
+        height: 200px;
     }
     
     .blog_box article{

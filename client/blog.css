@@ -424,6 +424,7 @@ footer .pFooter{
     gap: 29px;
 }
 .blog_box span img{
+    object-fit: contain;
     width: 100%;
     height: 290px;
     border-radius: 10px;
@@ -551,8 +552,7 @@ footer .pFooter{
         gap: 29px;
     }
     .blog_box span img{
-        /* width: ; */
-        object-fit: cover;
+        object-fit: contain;
         height: 250px;
     }
     .lastSection{
